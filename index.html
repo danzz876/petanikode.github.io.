@@ -1,0 +1,662 @@
+<!-- Header -->
+<header class="bg-slate-900/80 backdrop-blur-md border-b border-slate-800 sticky top-0 z-50">
+   <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+       <div class="flex items-center space-x-3">
+           <div class="bg-gradient-to-tr from-blue-600 to-indigo-500 p-2.5 rounded-xl text-white shadow-lg shadow-blue-500/20">
+               <i class="fa-solid fa-wand-magic-sparkles text-xl"></i>
+           </div>
+           <div>
+               <h1 class="font-bold text-lg leading-none bg-gradient-to-r from-white to-slate-400 bg-clip-text text-transparent">PhotoStudio Web</h1>
+               <p class="text-xs text-slate-400 mt-0.5">Editor Foto Studio Browser</p>
+           </div>
+       </div>
+       
+       <div class="flex items-center gap-3">
+           <button id="btnToggleHelp" class="px-3.5 py-2 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 hover:text-white text-xs sm:text-sm font-medium transition flex items-center gap-2 border border-slate-700">
+               <i class="fa-regular fa-circle-question text-blue-400"></i>
+               <span class="hidden sm:inline">Panduan / Penjelasan</span>
+           </button>
+           <label for="imageLoader" class="px-4 py-2 rounded-xl bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-500 hover:to-indigo-500 text-white text-xs sm:text-sm font-semibold transition shadow-md shadow-blue-600/30 cursor-pointer flex items-center gap-2">
+               <i class="fa-solid fa-cloud-arrow-up"></i>
+               <span>Unggah Foto</span>
+           </label>
+           <input type="file" id="imageLoader" accept="image/*" class="hidden">
+       </div>
+   </div>
+</header>
+
+<!-- Main Container -->
+<main class="flex-1 max-w-7xl w-full mx-auto p-4 sm:p-6 lg:p-8 flex flex-col gap-6">
+
+   <!-- Welcome & Feature Explanation Banner -->
+   <section id="welcomeBanner" class="bg-slate-900 border border-slate-800 rounded-2xl p-6 sm:p-8 shadow-2xl relative overflow-hidden transition-all duration-300">
+       <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-blue-600/10 rounded-full blur-3xl pointer-events-none"></div>
+       <div class="absolute -left-10 -top-10 w-64 h-64 bg-indigo-600/10 rounded-full blur-3xl pointer-events-none"></div>
+
+       <button id="btnCloseHelp" class="absolute top-4 right-4 text-slate-400 hover:text-white bg-slate-800/80 hover:bg-slate-700 p-2 rounded-xl transition">
+           <i class="fa-solid fa-xmark text-lg"></i>
+       </button>
+
+       <div class="max-w-3xl">
+           <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-semibold mb-4">
+               <i class="fa-solid fa-sparkles"></i>
+               <span>Selamat Datang di Editor Foto Web</span>
+           </div>
+           <h2 class="text-2xl sm:text-3xl font-bold text-white mb-3">Edit Foto Instan Langsung di Browser Anda</h2>
+           <p class="text-slate-400 text-sm sm:text-base leading-relaxed mb-6">
+               Aplikasi ini memungkinkan Anda untuk mengunggah, mengedit, memotong, menambahkan filter visual, dan mengunduh foto beresolusi tinggi tanpa perlu menginstal aplikasi tambahan. Semua pengeditan diproses secara privat langsung di perangkat Anda!
+           </p>
+
+           <!-- Features Cards Grid -->
+           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+               <div class="bg-slate-800/50 border border-slate-700/50 p-4 rounded-xl flex flex-col gap-2">
+                   <div class="w-10 h-10 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-400">
+                       <i class="fa-solid fa-sliders"></i>
+                   </div>
+                   <h3 class="font-semibold text-sm text-white">Penyesuaian Warna</h3>
+                   <p class="text-xs text-slate-400">Atur Brightness, Contrast, Saturation, Blur, Hue, dan Invert secara presisi.</p>
+               </div>
+
+               <div class="bg-slate-800/50 border border-slate-700/50 p-4 rounded-xl flex flex-col gap-2">
+                   <div class="w-10 h-10 rounded-lg bg-indigo-500/20 flex items-center justify-center text-indigo-400">
+                       <i class="fa-solid fa-wand-magic"></i>
+                   </div>
+                   <h3 class="font-semibold text-sm text-white">Filter Estetik</h3>
+                   <p class="text-xs text-slate-400">Terapkan preset filter menarik seperti Grayscale, Sepia, Vintage, hingga DuoTone.</p>
+               </div>
+
+               <div class="bg-slate-800/50 border border-slate-700/50 p-4 rounded-xl flex flex-col gap-2">
+                   <div class="w-10 h-10 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-400">
+                       <i class="fa-solid fa-font"></i>
+                   </div>
+                   <h3 class="font-semibold text-sm text-white">Tambahkan Teks</h3>
+                   <p class="text-xs text-slate-400">Beri teks kustom dengan warna dan ukuran yang bisa disesuaikan di atas foto.</p>
+               </div>
+
+               <div class="bg-slate-800/50 border border-slate-700/50 p-4 rounded-xl flex flex-col gap-2">
+                   <div class="w-10 h-10 rounded-lg bg-emerald-500/20 flex items-center justify-center text-emerald-400">
+                       <i class="fa-solid fa-crop-simple"></i>
+                   </div>
+                   <h3 class="font-semibold text-sm text-white">Rotasi & Flip</h3>
+                   <p class="text-xs text-slate-400">Putar gambar atau cermin secara vertikal/horizontal dengan mudah.</p>
+               </div>
+           </div>
+
+           <div class="mt-6 flex flex-wrap items-center justify-between gap-4 pt-4 border-t border-slate-800">
+               <p class="text-xs text-slate-400 flex items-center gap-2">
+                   <i class="fa-solid fa-shield-halved text-emerald-400"></i>
+                   <span>Foto Anda aman dan tidak diunggah ke server mana pun.</span>
+               </p>
+               <button id="btnStartEditing" class="px-5 py-2.5 rounded-xl bg-blue-600 hover:bg-blue-500 text-white font-semibold text-sm transition flex items-center gap-2">
+                   <span>Mulai Mengedit</span>
+                   <i class="fa-solid fa-arrow-right"></i>
+               </button>
+           </div>
+       </div>
+   </section>
+
+   <!-- Editor Workspace (Canvas + Control Panel) -->
+   <section class="grid grid-cols-1 lg:grid-cols-12 gap-6 flex-1 items-start">
+
+       <!-- Left/Top: Canvas Image Viewport -->
+       <div class="lg:col-span-8 bg-slate-900 border border-slate-800 rounded-2xl p-4 sm:p-6 flex flex-col items-center justify-between min-h-[420px] sm:min-h-[520px] shadow-xl relative overflow-hidden">
+           
+           <!-- Canvas Top Bar -->
+           <div class="w-full flex items-center justify-between pb-4 border-b border-slate-800 gap-2">
+               <div class="flex items-center gap-2">
+                   <span class="w-3 h-3 rounded-full bg-red-500/80 inline-block"></span>
+                   <span class="w-3 h-3 rounded-full bg-yellow-500/80 inline-block"></span>
+                   <span class="w-3 h-3 rounded-full bg-green-500/80 inline-block"></span>
+                   <span id="imageInfoText" class="text-xs text-slate-400 font-medium ml-2">Belum ada foto</span>
+               </div>
+               <div class="flex items-center gap-2">
+                   <button id="btnResetAll" class="px-3 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition flex items-center gap-1.5 border border-slate-700" title="Reset semua editan">
+                       <i class="fa-solid fa-rotate-left"></i>
+                       <span>Reset</span>
+                   </button>
+               </div>
+           </div>
+
+           <!-- Canvas Wrapper -->
+           <div id="canvasContainer" class="w-full flex-1 flex items-center justify-center my-4 overflow-auto rounded-xl p-2 border border-slate-800 checkerboard relative min-h-[300px]">
+               
+               <!-- Placeholder Input View -->
+               <div id="emptyState" class="text-center p-8 flex flex-col items-center max-w-sm">
+                   <div class="w-16 h-16 rounded-2xl bg-blue-600/10 text-blue-500 flex items-center justify-center mb-4 border border-blue-500/20 shadow-inner">
+                       <i class="fa-solid fa-image text-3xl"></i>
+                   </div>
+                   <h3 class="font-bold text-slate-200 text-lg mb-1">Unggah Foto Pertama Anda</h3>
+                   <p class="text-xs text-slate-400 mb-6">Pilih foto format JPG, PNG, atau WEBP dari komputer atau HP Anda untuk memulai editan.</p>
+                   <label for="imageLoaderPlaceholder" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-500 text-white rounded-xl text-xs font-semibold shadow-lg shadow-blue-600/30 transition cursor-pointer flex items-center gap-2">
+                       <i class="fa-solid fa-folder-open"></i>
+                       <span>Pilih Foto</span>
+                   </label>
+                   <input type="file" id="imageLoaderPlaceholder" accept="image/*" class="hidden">
+               </div>
+
+               <!-- Hidden Real Canvas for Processing -->
+               <canvas id="photoCanvas" class="max-w-full max-h-[480px] rounded shadow-2xl object-contain hidden transition-all duration-150"></canvas>
+           </div>
+
+           <!-- Canvas Bottom Bar / Download Actions -->
+           <div class="w-full flex flex-col sm:flex-row items-center justify-between pt-4 border-t border-slate-800 gap-3">
+               <div class="text-xs text-slate-400 text-center sm:text-left">
+                   Format Output: <span class="text-slate-200 font-semibold">PNG / Max Quality</span>
+               </div>
+               <div class="flex items-center gap-2 w-full sm:w-auto">
+                   <button id="btnDownload" disabled class="w-full sm:w-auto px-5 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 disabled:bg-slate-800 disabled:text-slate-600 text-white font-semibold text-xs sm:text-sm transition shadow-lg shadow-emerald-600/20 disabled:shadow-none flex items-center justify-center gap-2 cursor-pointer disabled:cursor-not-allowed">
+                       <i class="fa-solid fa-download"></i>
+                       <span>Unduh Hasil Foto</span>
+                   </button>
+               </div>
+           </div>
+       </div>
+
+       <!-- Right/Bottom: Controls Sidebar -->
+       <div class="lg:col-span-4 bg-slate-900 border border-slate-800 rounded-2xl p-5 shadow-xl flex flex-col gap-5">
+           
+           <!-- Tab Navigation for Editing Tools -->
+           <div class="flex bg-slate-950 p-1 rounded-xl border border-slate-800">
+               <button id="tabBtnAdjust" class="tab-btn flex-1 py-2 text-xs font-semibold rounded-lg bg-blue-600 text-white transition flex items-center justify-center gap-1.5" data-tab="tabAdjust">
+                   <i class="fa-solid fa-sliders"></i>
+                   <span>Penyesuaian</span>
+               </button>
+               <button id="tabBtnFilter" class="tab-btn flex-1 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5" data-tab="tabFilter">
+                   <i class="fa-solid fa-wand-magic-sparkles"></i>
+                   <span>Filter</span>
+               </button>
+               <button id="tabBtnTransform" class="tab-btn flex-1 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5" data-tab="tabTransform">
+                   <i class="fa-solid fa-rotate"></i>
+                   <span>Transform</span>
+               </button>
+               <button id="tabBtnText" class="tab-btn flex-1 py-2 text-xs font-semibold rounded-lg text-slate-400 hover:text-slate-200 transition flex items-center justify-center gap-1.5" data-tab="tabText">
+                   <i class="fa-solid fa-font"></i>
+                   <span>Teks</span>
+               </button>
+           </div>
+
+           <!-- Tab Content 1: Adjustment Sliders -->
+           <div id="tabAdjust" class="tab-content flex flex-col gap-4">
+               <div>
+                   <div class="flex justify-between text-xs font-medium text-slate-300 mb-1.5">
+                       <label class="flex items-center gap-1.5"><i class="fa-solid fa-sun text-yellow-400"></i> Kecerahan (Brightness)</label>
+                       <span id="valBrightness" class="text-blue-400 font-mono">100%</span>
+                   </div>
+                   <input type="range" id="sliderBrightness" min="0" max="200" value="100" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+               </div>
+
+               <div>
+                   <div class="flex justify-between text-xs font-medium text-slate-300 mb-1.5">
+                       <label class="flex items-center gap-1.5"><i class="fa-solid fa-circle-half-stroke text-blue-400"></i> Kontras (Contrast)</label>
+                       <span id="valContrast" class="text-blue-400 font-mono">100%</span>
+                   </div>
+                   <input type="range" id="sliderContrast" min="0" max="200" value="100" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+               </div>
+
+               <div>
+                   <div class="flex justify-between text-xs font-medium text-slate-300 mb-1.5">
+                       <label class="flex items-center gap-1.5"><i class="fa-solid fa-droplet text-pink-400"></i> Saturasi (Saturate)</label>
+                       <span id="valSaturation" class="text-blue-400 font-mono">100%</span>
+                   </div>
+                   <input type="range" id="sliderSaturation" min="0" max="200" value="100" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+               </div>
+
+               <div>
+                   <div class="flex justify-between text-xs font-medium text-slate-300 mb-1.5">
+                       <label class="flex items-center gap-1.5"><i class="fa-solid fa-eye-slash text-purple-400"></i> Efek Blur</label>
+                       <span id="valBlur" class="text-blue-400 font-mono">0px</span>
+                   </div>
+                   <input type="range" id="sliderBlur" min="0" max="20" value="0" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+               </div>
+
+               <div>
+                   <div class="flex justify-between text-xs font-medium text-slate-300 mb-1.5">
+                       <label class="flex items-center gap-1.5"><i class="fa-solid fa-palette text-emerald-400"></i> Hue Rotate</label>
+                       <span id="valHue" class="text-blue-400 font-mono">0°</span>
+                   </div>
+                   <input type="range" id="sliderHue" min="0" max="360" value="0" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+               </div>
+
+               <div>
+                   <div class="flex justify-between text-xs font-medium text-slate-300 mb-1.5">
+                       <label class="flex items-center gap-1.5"><i class="fa-solid fa-right-left text-orange-400"></i> Inversi Warna</label>
+                       <span id="valInvert" class="text-blue-400 font-mono">0%</span>
+                   </div>
+                   <input type="range" id="sliderInvert" min="0" max="100" value="0" class="w-full accent-blue-500 h-1.5 bg-slate-800 rounded-lg cursor-pointer">
+               </div>
+           </div>
+
+           <!-- Tab Content 2: Preset Filters -->
+           <div id="tabFilter" class="tab-content hidden grid grid-cols-2 gap-2.5">
+               <button class="btn-filter bg-slate-800 hover:bg-slate-700 p-3 rounded-xl border border-slate-700 text-left transition" data-filter="normal">
+                   <span class="block text-xs font-semibold text-white">Normal</span>
+                   <span class="block text-[10px] text-slate-400">Tanpa Filter</span>
+               </button>
+               <button class="btn-filter bg-slate-800 hover:bg-slate-700 p-3 rounded-xl border border-slate-700 text-left transition" data-filter="grayscale">
+                   <span class="block text-xs font-semibold text-white">Grayscale</span>
+                   <span class="block text-[10px] text-slate-400">Hitam Putih</span>
+               </button>
+               <button class="btn-filter bg-slate-800 hover:bg-slate-700 p-3 rounded-xl border border-slate-700 text-left transition" data-filter="sepia">
+                   <span class="block text-xs font-semibold text-white">Sepia</span>
+                   <span class="block text-[10px] text-slate-400">Nuansa Klasik</span>
+               </button>
+               <button class="btn-filter bg-slate-800 hover:bg-slate-700 p-3 rounded-xl border border-slate-700 text-left transition" data-filter="vintage">
+                   <span class="block text-xs font-semibold text-white">Vintage</span>
+                   <span class="block text-[10px] text-slate-400">Retro Analog</span>
+               </button>
+               <button class="btn-filter bg-slate-800 hover:bg-slate-700 p-3 rounded-xl border border-slate-700 text-left transition" data-filter="warm">
+                   <span class="block text-xs font-semibold text-white">Warm Sun</span>
+                   <span class="block text-[10px] text-slate-400">Hangat Kecerahan</span>
+               </button>
+               <button class="btn-filter bg-slate-800 hover:bg-slate-700 p-3 rounded-xl border border-slate-700 text-left transition" data-filter="dramatic">
+                   <span class="block text-xs font-semibold text-white">Dramatic</span>
+                   <span class="block text-[10px] text-slate-400">Kontras Tinggi</span>
+               </button>
+           </div>
+
+           <!-- Tab Content 3: Transforms -->
+           <div id="tabTransform" class="tab-content hidden flex flex-col gap-4">
+               <label class="text-xs font-medium text-slate-300">Rotasi Foto</label>
+               <div class="grid grid-cols-2 gap-2">
+                   <button id="btnRotateLeft" class="p-3 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 text-xs font-medium transition flex items-center justify-center gap-2">
+                       <i class="fa-solid fa-rotate-left"></i>
+                       <span>Putar Kiri 90°</span>
+                   </button>
+                   <button id="btnRotateRight" class="p-3 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 text-xs font-medium transition flex items-center justify-center gap-2">
+                       <i class="fa-solid fa-rotate-right"></i>
+                       <span>Putar Kanan 90°</span>
+                   </button>
+               </div>
+
+               <label class="text-xs font-medium text-slate-300 mt-2">Cermin (Flip)</label>
+               <div class="grid grid-cols-2 gap-2">
+                   <button id="btnFlipH" class="p-3 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 text-xs font-medium transition flex items-center justify-center gap-2">
+                       <i class="fa-solid fa-arrows-left-right"></i>
+                       <span>Flip Horizontal</span>
+                   </button>
+                   <button id="btnFlipV" class="p-3 bg-slate-800 hover:bg-slate-700 rounded-xl border border-slate-700 text-xs font-medium transition flex items-center justify-center gap-2">
+                       <i class="fa-solid fa-arrows-up-down"></i>
+                       <span>Flip Vertikal</span>
+                   </button>
+               </div>
+           </div>
+
+           <!-- Tab Content 4: Text Watermark/Overlays -->
+           <div id="tabText" class="tab-content hidden flex flex-col gap-4">
+               <div>
+                   <label class="block text-xs font-medium text-slate-300 mb-1">Teks Overlay</label>
+                   <input type="text" id="textInput" placeholder="Ketik teks di sini..." class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+               </div>
+
+               <div class="grid grid-cols-2 gap-2">
+                   <div>
+                       <label class="block text-xs font-medium text-slate-300 mb-1">Warna Teks</label>
+                       <input type="color" id="textColor" value="#ffffff" class="w-full h-9 bg-slate-950 border border-slate-800 rounded-xl p-1 cursor-pointer">
+                   </div>
+                   <div>
+                       <label class="block text-xs font-medium text-slate-300 mb-1">Ukuran Font</label>
+                       <input type="number" id="textSize" value="40" min="10" max="200" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                   </div>
+               </div>
+
+               <div>
+                   <label class="block text-xs font-medium text-slate-300 mb-1">Posisi Teks</label>
+                   <select id="textPosition" class="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs text-slate-100 focus:outline-none focus:border-blue-500">
+                       <option value="center">Tengah (Center)</option>
+                       <option value="top">Atas (Top)</option>
+                       <option value="bottom">Bawah (Bottom)</option>
+                   </select>
+               </div>
+           </div>
+
+       </div>
+   </section>
+</main>
+
+<!-- JavaScript Application Logic -->
+<script>
+   const imageLoader = document.getElementById('imageLoader');
+   const imageLoaderPlaceholder = document.getElementById('imageLoaderPlaceholder');
+   const photoCanvas = document.getElementById('photoCanvas');
+   const ctx = photoCanvas.getContext('2d');
+   const emptyState = document.getElementById('emptyState');
+   const btnDownload = document.getElementById('btnDownload');
+   const btnResetAll = document.getElementById('btnResetAll');
+   const imageInfoText = document.getElementById('imageInfoText');
+   
+   const welcomeBanner = document.getElementById('welcomeBanner');
+   const btnCloseHelp = document.getElementById('btnCloseHelp');
+   const btnToggleHelp = document.getElementById('btnToggleHelp');
+   const btnStartEditing = document.getElementById('btnStartEditing');
+
+   const sliderBrightness = document.getElementById('sliderBrightness');
+   const sliderContrast = document.getElementById('sliderContrast');
+   const sliderSaturation = document.getElementById('sliderSaturation');
+   const sliderBlur = document.getElementById('sliderBlur');
+   const sliderHue = document.getElementById('sliderHue');
+   const sliderInvert = document.getElementById('sliderInvert');
+
+   const valBrightness = document.getElementById('valBrightness');
+   const valContrast = document.getElementById('valContrast');
+   const valSaturation = document.getElementById('valSaturation');
+   const valBlur = document.getElementById('valBlur');
+   const valHue = document.getElementById('valHue');
+   const valInvert = document.getElementById('valInvert');
+
+   const btnRotateLeft = document.getElementById('btnRotateLeft');
+   const btnRotateRight = document.getElementById('btnRotateRight');
+   const btnFlipH = document.getElementById('btnFlipH');
+   const btnFlipV = document.getElementById('btnFlipV');
+
+   const textInput = document.getElementById('textInput');
+   const textColor = document.getElementById('textColor');
+   const textSize = document.getElementById('textSize');
+   const textPosition = document.getElementById('textPosition');
+
+   let currentImage = null;
+   let state = {
+       brightness: 100,
+       contrast: 100,
+       saturation: 100,
+       blur: 0,
+       hue: 0,
+       invert: 0,
+       rotation: 0,
+       flipH: 1,
+       flipV: 1,
+       text: '',
+       textColor: '#ffffff',
+       textSize: 40,
+       textPos: 'center'
+   };
+
+   window.addEventListener('DOMContentLoaded', () => {
+       setupNavigationTabs();
+       setupImageLoaders();
+       setupFilterSliders();
+       setupTransformControls();
+       setupTextOverlayControls();
+       setupPresetFilters();
+       setupHelpBanner();
+   });
+
+   function setupHelpBanner() {
+       btnCloseHelp.addEventListener('click', () => welcomeBanner.classList.add('hidden'));
+       btnStartEditing.addEventListener('click', () => welcomeBanner.classList.add('hidden'));
+       btnToggleHelp.addEventListener('click', () => welcomeBanner.classList.toggle('hidden'));
+   }
+
+   function setupNavigationTabs() {
+       const tabs = document.querySelectorAll('.tab-btn');
+       const contents = document.querySelectorAll('.tab-content');
+
+       tabs.forEach(tab => {
+           tab.addEventListener('click', () => {
+               tabs.forEach(t => {
+                   t.classList.remove('bg-blue-600', 'text-white');
+                   t.classList.add('text-slate-400');
+               });
+               contents.forEach(c => c.classList.add('hidden'));
+
+               tab.classList.add('bg-blue-600', 'text-white');
+               tab.classList.remove('text-slate-400');
+
+               const target = tab.getAttribute('data-tab');
+               document.getElementById(target).classList.remove('hidden');
+           });
+       });
+   }
+
+   function setupImageLoaders() {
+       const handleFile = (e) => {
+           const file = e.target.files[0];
+           if (!file) return;
+
+           const reader = new FileReader();
+           reader.onload = (event) => {
+               const img = new Image();
+               img.onload = () => {
+                   currentImage = img;
+                   emptyState.classList.add('hidden');
+                   photoCanvas.classList.remove('hidden');
+                   btnDownload.removeAttribute('disabled');
+
+                   imageInfoText.textContent = `${file.name} (${img.width}x${img.height}px)`;
+                   
+                   resetEditsState();
+                   renderCanvas();
+               };
+               img.src = event.target.result;
+           };
+           reader.readAsDataURL(file);
+       };
+
+       imageLoader.addEventListener('change', handleFile);
+       imageLoaderPlaceholder.addEventListener('change', handleFile);
+   }
+
+   function setupFilterSliders() {
+       const updateStateAndRender = () => {
+           state.brightness = parseInt(sliderBrightness.value);
+           state.contrast = parseInt(sliderContrast.value);
+           state.saturation = parseInt(sliderSaturation.value);
+           state.blur = parseInt(sliderBlur.value);
+           state.hue = parseInt(sliderHue.value);
+           state.invert = parseInt(sliderInvert.value);
+
+           valBrightness.textContent = `${state.brightness}%`;
+           valContrast.textContent = `${state.contrast}%`;
+           valSaturation.textContent = `${state.saturation}%`;
+           valBlur.textContent = `${state.blur}px`;
+           valHue.textContent = `${state.hue}°`;
+           valInvert.textContent = `${state.invert}%`;
+
+           renderCanvas();
+       };
+
+       [sliderBrightness, sliderContrast, sliderSaturation, sliderBlur, sliderHue, sliderInvert].forEach(slider => {
+           slider.addEventListener('input', updateStateAndRender);
+       });
+   }
+
+   function setupTransformControls() {
+       btnRotateLeft.addEventListener('click', () => {
+           state.rotation = (state.rotation - 90) % 360;
+           renderCanvas();
+       });
+
+       btnRotateRight.addEventListener('click', () => {
+           state.rotation = (state.rotation + 90) % 360;
+           renderCanvas();
+       });
+
+       btnFlipH.addEventListener('click', () => {
+           state.flipH *= -1;
+           renderCanvas();
+       });
+
+       btnFlipV.addEventListener('click', () => {
+           state.flipV *= -1;
+           renderCanvas();
+       });
+   }
+
+   function setupTextOverlayControls() {
+       textInput.addEventListener('input', (e) => {
+           state.text = e.target.value;
+           renderCanvas();
+       });
+
+       textColor.addEventListener('input', (e) => {
+           state.textColor = e.target.value;
+           renderCanvas();
+       });
+
+       textSize.addEventListener('input', (e) => {
+           state.textSize = parseInt(e.target.value) || 20;
+           renderCanvas();
+       });
+
+       textPosition.addEventListener('change', (e) => {
+           state.textPos = e.target.value;
+           renderCanvas();
+       });
+   }
+
+   function setupPresetFilters() {
+       const filterBtns = document.querySelectorAll('.btn-filter');
+       filterBtns.forEach(btn => {
+           btn.addEventListener('click', () => {
+               const filter = btn.getAttribute('data-filter');
+               applyFilterPreset(filter);
+           });
+       });
+   }
+
+   function applyFilterPreset(filter) {
+       state.brightness = 100;
+       state.contrast = 100;
+       state.saturation = 100;
+       state.blur = 0;
+       state.hue = 0;
+       state.invert = 0;
+
+       switch(filter) {
+           case 'grayscale':
+               state.saturation = 0;
+               break;
+           case 'sepia':
+               state.hue = 30;
+               state.saturation = 70;
+               state.contrast = 110;
+               break;
+           case 'vintage':
+               state.contrast = 120;
+               state.brightness = 110;
+               state.saturation = 80;
+               state.hue = 15;
+               break;
+           case 'warm':
+               state.brightness = 105;
+               state.saturation = 130;
+               state.hue = 10;
+               break;
+           case 'dramatic':
+               state.contrast = 160;
+               state.saturation = 120;
+               state.brightness = 90;
+               break;
+           case 'normal':
+           default:
+               break;
+       }
+
+       syncUIWithState();
+       renderCanvas();
+   }
+
+   function syncUIWithState() {
+       sliderBrightness.value = state.brightness;
+       sliderContrast.value = state.contrast;
+       sliderSaturation.value = state.saturation;
+       sliderBlur.value = state.blur;
+       sliderHue.value = state.hue;
+       sliderInvert.value = state.invert;
+
+       valBrightness.textContent = `${state.brightness}%`;
+       valContrast.textContent = `${state.contrast}%`;
+       valSaturation.textContent = `${state.saturation}%`;
+       valBlur.textContent = `${state.blur}px`;
+       valHue.textContent = `${state.hue}°`;
+       valInvert.textContent = `${state.invert}%`;
+   }
+
+   function resetEditsState() {
+       state = {
+           brightness: 100,
+           contrast: 100,
+           saturation: 100,
+           blur: 0,
+           hue: 0,
+           invert: 0,
+           rotation: 0,
+           flipH: 1,
+           flipV: 1,
+           text: '',
+           textColor: '#ffffff',
+           textSize: 40,
+           textPos: 'center'
+       };
+       textInput.value = '';
+       syncUIWithState();
+   }
+
+   btnResetAll.addEventListener('click', () => {
+       if (!currentImage) return;
+       resetEditsState();
+       renderCanvas();
+   });
+
+   function renderCanvas() {
+       if (!currentImage) return;
+
+       const isOrientedVertically = Math.abs(state.rotation % 180) === 90;
+       const canvasWidth = isOrientedVertically ? currentImage.height : currentImage.width;
+       const canvasHeight = isOrientedVertically ? currentImage.width : currentImage.height;
+
+       photoCanvas.width = canvasWidth;
+       photoCanvas.height = canvasHeight;
+
+       ctx.clearRect(0, 0, photoCanvas.width, photoCanvas.height);
+       ctx.save();
+
+       ctx.translate(photoCanvas.width / 2, photoCanvas.height / 2);
+       ctx.rotate((state.rotation * Math.PI) / 180);
+       ctx.scale(state.flipH, state.flipV);
+
+       ctx.filter = `
+           brightness(${state.brightness}%)
+           contrast(${state.contrast}%)
+           saturate(${state.saturation}%)
+           blur(${state.blur}px)
+           hue-rotate(${state.hue}deg)
+           invert(${state.invert}%)
+       `;
+
+       ctx.drawImage(
+           currentImage,
+           -currentImage.width / 2,
+           -currentImage.height / 2
+       );
+
+       ctx.restore();
+
+       if (state.text.trim() !== '') {
+           ctx.save();
+           ctx.font = `bold ${state.textSize}px 'Plus Jakarta Sans', sans-serif`;
+           ctx.fillStyle = state.textColor;
+           ctx.textAlign = 'center';
+           ctx.shadowColor = 'rgba(0,0,0,0.7)';
+           ctx.shadowBlur = 8;
+
+           let yPos = photoCanvas.height / 2;
+           if (state.textPos === 'top') {
+               yPos = state.textSize + 20;
+           } else if (state.textPos === 'bottom') {
+               yPos = photoCanvas.height - 30;
+           }
+
+           ctx.fillText(state.text, photoCanvas.width / 2, yPos);
+           ctx.restore();
+       }
+   }
+
+   btnDownload.addEventListener('click', () => {
+       if (!currentImage) return;
+
+       const link = document.createElement('a');
+       link.download = 'edited-photo.png';
+       link.href = photoCanvas.toDataURL('image/png', 1.0);
+       link.click();
+   });
+</script>
